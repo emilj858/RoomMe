@@ -24,6 +24,7 @@ namespace RoomMe.Api.Infrastructure
                 .HasMany(u => u.Messages)
                 .WithOptional(m => m.User)
                 .HasForeignKey(m => m.UserId);
+             
 
             //user has many received convos
             modelBuilder.Entity<User>()
