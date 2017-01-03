@@ -3,6 +3,7 @@
 
     angular
         .module('app', ['ui.router'])
+        .value('apiUrl', 'http://localhost:49798/api')
         .config(function($stateProvider, $urlRouterProvider) {
             $stateProvider
 
