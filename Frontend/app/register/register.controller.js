@@ -13,7 +13,8 @@
         vm.title = 'RegisterController';
 
         vm.registration = {
-            username: '',
+            firstName: '',
+            lastName: '',
             emailAddress: '',
             password: '',
             confirmPassword: ''
@@ -28,7 +29,11 @@
                 .register(vm.registration)
                 .then(function(response) {
                     alert('Successful registration! Now login');
-                    $state.go('login');
+                    authFactory
+                        .login(vm.registration.emailAddress, vm.registration.password)
+                        .then(function() {
+                            $state.go('profile.detail');
+                        });
                 })
                 .catch(function(error) {
                     alert('Bad registration.');

@@ -82,7 +82,10 @@ namespace RoomMe.Api.Controllers
 
             var user = new User
             {
-                UserName = registration.EmailAddress
+                FirstName = registration.FirstName,
+                LastName = registration.LastName,
+                UserName = registration.EmailAddress,
+                Email = registration.EmailAddress
             };
 
             var result = _userManager.Create(user, registration.Password);

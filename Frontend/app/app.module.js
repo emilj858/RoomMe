@@ -2,12 +2,15 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router'])
+        .module('app', ['ui.router', 'LocalStorageModule'])
         .value('apiUrl', 'http://localhost:49798/api')
-        .config(function($stateProvider, $urlRouterProvider) {
+        .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+
+            $httpProvider.interceptors.push('authInterceptorService');
+
+            $urlRouterProvider.otherwise('/login');
+
             $stateProvider
-
-
             .state('home', {
                 url: '/home',
                 controller: 'HomeController as homeCtrl',
@@ -21,21 +24,24 @@
             })
 
             .state('profile.detail', {
-                url: '/detail?id',
-                controller: 'ProfileController as profileCtrl',
-                templateUrl: '/app/profile/profile.detail.html'
+                url: '/detail',
+                controller: 'ProfileDetailController as profileDetailCtrl',
+                templateUrl: '/app/profile/profile.detail.html',
+                secure: true
             })
 
             .state('profile.addListing', {
                 url: '/addListing',
                 controller: 'AddListingController as addListingCtrl',
-                templateUrl: '/app/profile/profile.addListing.html'
+                templateUrl: '/app/profile/profile.addListing.html',
+                secure: true
             })
 
             .state('profile.conversation', {
                 url: '/conversation',
                 controller: 'ConversationController as conversationCtrl',
-                templateUrl: '/app/profile/profile.conversation.html'
+                templateUrl: '/app/profile/profile.conversation.html',
+                secure: true
             })
 
             .state('listing', {
@@ -57,9 +63,10 @@
             })
 
             .state('listing.detail', {
-                    url: '/detail?id',
-                    controller: 'ListingDetailController as listingDetailCtrl',
-                    templateUrl: '/app/listing/listing.detail.html'
+                url: '/detail?id',
+                controller: 'ListingDetailController as listingDetailCtrl',
+                templateUrl: '/app/listing/listing.detail.html',
+                secure: true
             })
 
             .state('register', {

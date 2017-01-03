@@ -31,7 +31,7 @@
                        '&password=' + password;
 
             return $http
-                .post(apiUrl + '/token', data, {
+                .post(apiUrl + '/users/login', data, {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
@@ -46,6 +46,9 @@
                     service.username = username;
 
                     return response.data;
+                })
+                .catch(function(error) {
+                    console.log(error);
                 });
         }
 

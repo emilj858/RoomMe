@@ -5,10 +5,10 @@
         .module('app')
         .factory('conversationFactory', conversationFactory);
 
-    conversationFactory.$inject = ['$http'];
+    conversationFactory.$inject = ['apiUrl', '$http'];
 
     /* @ngInject */
-    function conversationFactory($http) {
+    function conversationFactory(apiUrl, $http) {
         var service = {
             getAll: getAll,
             getById: getById,
@@ -22,7 +22,7 @@
 
         function getAll() {
    			return $http
-   				.get('');
+   				.get(apiUrl + '/conversations');
         }
 
         function getById() {
