@@ -19,12 +19,12 @@
 
         function getAll() {
         	return $http
-        		.get('');
+        		.get('http://localhost:49798/api/messages');
         }
 
         function create(obj) {
         	return $http
-        		.post('', obj)
+        		.post('http://localhost:49798/api/messages', obj)
         }
     }
 })();

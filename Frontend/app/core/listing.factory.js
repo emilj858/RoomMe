@@ -23,27 +23,27 @@
 
         function getById(id) {
         	return $http
-        		.get('' + id);
+        		.get('http://localhost:49798/api/listings/' + id);
         }
 
         function GetAll() {
         	return $http
-        		.get('');
+        		.get('http://localhost:49798/api/listings');
         }
 
         function create(obj) {
         	return $http
-        		.post('', obj);
+        		.post('http://localhost:49798/api/listings', obj);
         }
 
         function update(id, obj) {
         	return $http
-        		.put('' + id, obj);
+        		.put('http://localhost:49798/api/listings/' + id, obj);
         }
 
         function remove(id) {
         	return $http
-        		.delete('' + id);
+        		.delete('http://localhost:49798/api/listings/' + id);
         }
 
     }

@@ -22,17 +22,17 @@
 
         function getAll() {
    			return $http
-   				.get('');
+   				.get('http://localhost:49798/api/conversations');
         }
 
         function getById() {
         	return $http
-        		.get('' + id);
+        		.get('http://localhost:49798/api/conversations/' + id);
         }
 
         function create(obj) {
         	return $http
-        		.post('', obj);
+        		.post('http://localhost:49798/api/conversations', obj);
         }
     }
 })();

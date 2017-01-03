@@ -132,7 +132,11 @@ C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\bin\System.Net.Http.Formatting.xml
 C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\bin\System.Web.Http.xml
 C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\bin\System.Web.Http.WebHost.xml
 C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\obj\Debug\RoomMe.Api.csprojResolveAssemblyReference.cache
-C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\obj\Debug\RoomMe.Api.Migrations.InitialMigration.resources
-C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\obj\Debug\RoomMe.Api.csproj.GenerateResource.Cache
 C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\obj\Debug\RoomMe.Api.dll
 C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\obj\Debug\RoomMe.Api.pdb
+C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\bin\Bogus.dll
+C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\bin\Faker.NET4.dll
+C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\bin\Bogus.xml
+C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\bin\de-DE\Faker.NET4.resources.dll
+C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\obj\Debug\RoomMe.Api.Migrations.InitialMigration.resources
+C:\Dev\GitHub\RoomMe\Backend\RoomMe.Api\obj\Debug\RoomMe.Api.csproj.GenerateResource.Cache

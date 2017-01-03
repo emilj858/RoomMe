@@ -149,8 +149,8 @@ namespace RoomMe.Api.Controllers
             return Ok(listing);
         }
 
-        // doing some new stuff
-        //Post Favorite to User
+        
+        //Post photo to listing
         [Authorize]
         [HttpPost, Route("api/listingPhotoes/{listingPhotoId}/{listingId}")]
         public IHttpActionResult AddListingPhotoToListing(int listingPhotoId, int listingId)
@@ -166,7 +166,7 @@ namespace RoomMe.Api.Controllers
             return Ok();
         }
 
-        //Delete Favorite/photo of User/listing
+        //Delete photo of listing
         [Authorize]
         [HttpDelete, Route("api/listingPhotoes/{listingPhotoId}/{listingId}")]
         public IHttpActionResult DeleteListingPhotoFromListing(int listingPhotoId, int listingId)
@@ -179,7 +179,7 @@ namespace RoomMe.Api.Controllers
         }
 
 
-        //ending new stuff
+       
 
         protected override void Dispose(bool disposing)
         {
