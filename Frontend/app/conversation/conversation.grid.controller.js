@@ -12,7 +12,7 @@
         var vm = this;
         vm.title = 'conversationController';
         vm.conversations = [];
-
+        vm.createConversation = createConversation;
 
         activate();
 
@@ -25,5 +25,13 @@
                     vm.conversations = response.data
                 });
               }
+        function createConversation(conversation) {
+            conversationFactory
+                .create(conversation)
+                .then(function() {
+                    $state.go('conversation.detail');
+                })
+
+        }
     }
 })();

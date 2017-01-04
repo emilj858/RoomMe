@@ -37,11 +37,23 @@
                 secure: true
             })
 
-            .state('profile.conversation', {
+            .state('conversation', {
                 url: '/conversation',
-                controller: 'ConversationController as conversationCtrl',
-                templateUrl: '/app/profile/profile.conversation.html',
+                abstract: true,
+                templateUrl: '<div ui-view></div>',
                 secure: true
+            })
+
+            .state('conversation.grid', {
+                url: '/grid',
+                controller: 'CoversationGridController as conversationGridCtrl',
+                templateUrl: '/app/conversation/conversation.grid.html'
+            })
+
+            .state('conversation.detail', {
+                url: '/detail',
+                controller: 'ConversationDetailController as conversationDetailCtrl',
+                templateUrl: '/app/conversation/conversation.detail.html'
             })
 
             .state('listing', {

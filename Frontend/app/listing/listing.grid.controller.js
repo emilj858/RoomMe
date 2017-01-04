@@ -5,10 +5,10 @@
         .module('app')
         .controller('ListingGridController', ListingGridController);
 
-    ListingGridController.$inject = ['$stateParams'];
+    ListingGridController.$inject = ['$stateParams', 'listingFactory'];
 
     /* @ngInject */
-    function ListingGridController($stateParams) {
+    function ListingGridController($stateParams, listingFactory) {
         var vm = this;
         vm.title = 'ListingGridController';
         vm.listings = [];
@@ -21,7 +21,7 @@
             listingFactory
                 .getAll()
                 .then(function(response){
-                    vm.listings = response.data
+                    vm.listings = response.data;
                 });
         }
     }

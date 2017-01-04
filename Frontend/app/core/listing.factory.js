@@ -23,27 +23,27 @@
 
         function getById(id) {
         	return $http
-        		.get(apiUrl + '/Listings/' + id);
+        		.get(apiUrl + '/listings/' + id);
         }
 
         function GetAll() {
         	return $http
-        		.get(apiUrl + '/Listings');
+        		.get(apiUrl + '/listings');
         }
 
         function create(obj) {
         	return $http
-        		.post(apiUrl + '/Listings', obj);
+        		.post(apiUrl + '/listings', obj);
         }
 
         function update(id, obj) {
         	return $http
-        		.put(apiUrl + '/Listings/' + id, obj);
+        		.put(apiUrl + '/listings/' + id, obj);
         }
 
         function remove(id) {
         	return $http
-        		.delete(apiUrl + '/Listings/' + id);
+        		.delete(apiUrl + '/listings/' + id);
         }
 
     }

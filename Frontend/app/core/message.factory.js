@@ -19,12 +19,12 @@
 
         function getAll() {
         	return $http
-        		.get(apiUrl + '/Messages');
+        		.get(apiUrl + '/messages');
         }
 
         function create(obj) {
         	return $http
-        		.post(apiUrl + '/Messages', obj)
+        		.post(apiUrl + '/messages', obj)
         }
     }
 })();

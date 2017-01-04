@@ -5,18 +5,20 @@
         .module('app')
         .controller('ProfileAddListing', ProfileAddListing);
 
-    ProfileAddListing.$inject = ['$stateParams'];
+    ProfileAddListing.$inject = ['$stateParams', 'listingFactory'];
 
     /* @ngInject */
-    function ProfileAddListing($stateParams) {
+    function ProfileAddListing($stateParams, listingFactory) {
         var vm = this;
         vm.title = 'ProfileAddListing';
+        vm.addListing = addListing;
 
-        activate();
+        ///////////////////
 
-        ////////////////
+        function addListing(listing) {
+            listingFactory
+            .create(listing);
 
-        function activate() {
         }
     }
 })();

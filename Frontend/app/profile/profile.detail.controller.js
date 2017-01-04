@@ -5,12 +5,13 @@
         .module('app')
         .controller('ProfileDetailController', ProfileDetailController);
 
-    ProfileDetailController.$inject = ['$stateParams', 'conversationFactory'];
+    ProfileDetailController.$inject = ['$stateParams', 'conversationFactory', 'userFactory'];
 
     /* @ngInject */
-    function ProfileDetailController($stateParams, conversationFactory) {
+    function ProfileDetailController($stateParams, conversationFactory, userFactory) {
         var vm = this;
         vm.title = 'ProfileDetailController';
+        vm.currentUser;
 
         activate();
 
@@ -22,6 +23,12 @@
                 .then(function(response) {
                     vm.conversations = response.data;
                 });
+            userFactory
+                .getById($stateParams.id)
+                .then(function(response){
+                    vm.currentUser = response.data;
+                });
+
         }
     }
 })();
