@@ -24,32 +24,32 @@
 
         function getById(id) {
         	return $http
-        		.get('' + id);
+        		.get(apiUrl + '/Users/' + id);
         }
         function getAll() {
         	return $http
-        		.get('');
+        		.get(apiUrl + '/Users');
         }
         function create(obj) {
         	return $http
-        		.post('', obj);
+        		.post(apiUrl + '/Users', obj);
         }
         function update(obj, id) {
         	return $http
-        		.put('' + id, obj);
+        		.put(apiUrl + '/Users/' + id, obj);
         }
         function remove(id) {
         	return $http
-        		.delete('' + id);
+        		.delete(apiUrl + '/Users/' + id);
         }
         function addFavoriteToUser(listingId, userId) {
         	return $http
-        		.post('' + listingId + '/users/' + userId);
+        		.post(apiUrl + '/Favorites/' + listingId + userId);
         }
 
         function removeFavoriteFromUser(listingId, userId) {
         	return $http
-        		.delete('' + listingId + '/users/' + userId)
+        		.delete(apiUrl + '/Favorites/' + listingId + userId)
         }
     }
 })();
