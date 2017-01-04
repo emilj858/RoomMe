@@ -29,7 +29,14 @@ namespace RoomMe.Api.Controllers
                 l.State,
                 l.Zip,
                 l.Price,
-                l.Description
+                l.Description,
+                ListingPhotoes = l.ListingPhotoes.Select(lp => new
+                {
+                    lp.ListingPhotoId,
+                    lp.Url,
+                    lp.Title
+                })
+                
     });
             return Ok(resultSet);
         }
@@ -53,7 +60,13 @@ namespace RoomMe.Api.Controllers
                 l.State,
                 l.Zip,
                 l.Price,
-                l.Description
+                l.Description,
+                ListingPhotoes = l.ListingPhotoes.Select(lp => new
+                {
+                    lp.ListingPhotoId,
+                    lp.Url,
+                    lp.Title
+                })
             });
             return Ok(resultSet);
         }
@@ -80,6 +93,7 @@ namespace RoomMe.Api.Controllers
             dbListing.Zip = listing.Zip;
             dbListing.Price = listing.Price;
             dbListing.Description = listing.Description;
+
 
             db.Entry(listing).State = EntityState.Modified;
 
@@ -134,6 +148,38 @@ namespace RoomMe.Api.Controllers
 
             return Ok(listing);
         }
+
+        // doing some new stuff
+        //Post Favorite to User
+        [Authorize]
+        [HttpPost, Route("api/listingPhotoes/{listingPhotoId}/{listingId}")]
+        public IHttpActionResult AddListingPhotoToListing(int listingPhotoId, int listingId)
+        {
+            ListingPhoto listingPhoto = new ListingPhoto();
+
+            listingPhoto.ListingPhotoId = listingPhotoId;
+            listingPhoto.ListingId = listingId;
+
+            db.ListingPhotoes.Add(listingPhoto);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        //Delete Favorite/photo of User/listing
+        [Authorize]
+        [HttpDelete, Route("api/listingPhotoes/{listingPhotoId}/{listingId}")]
+        public IHttpActionResult DeleteListingPhotoFromListing(int listingPhotoId, int listingId)
+        {
+            var listingPhoto = db.ListingPhotoes.Find(listingPhotoId, listingId);
+            db.ListingPhotoes.Remove(listingPhoto);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+
+        //ending new stuff
 
         protected override void Dispose(bool disposing)
         {

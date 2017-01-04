@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="" ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Room Me</title>
+
+		<!-- bower:css -->
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+		<!-- endbower -->
+
+		<!-- inject:css -->
+		<!-- endinject -->
+	</head>
+	<body>
+
+		<h1>RoomMe</h1>
+		
+		<div class="container">
+			<div ui-view></div>
+		</div>
+
+		<!-- bower:js -->
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+		<script src="bower_components/jquery/dist/jquery.js"></script>
+		<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+		<script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+		<!-- endbower -->
+
+		<!-- inject:js -->
+		<script src="app/app.module.js"></script>
+		<script src="app/core/auth.factory.js"></script>
+		<script src="app/core/authInterceptor.factory.js"></script>
+		<script src="app/core/conversation.factory.js"></script>
+		<script src="app/core/listing.factory.js"></script>
+		<script src="app/core/message.factory.js"></script>
+		<script src="app/core/user.factory.js"></script>
+		<script src="app/home/home.controller.js"></script>
+		<script src="app/listing/listing.detail.controller.js"></script>
+		<script src="app/listing/listing.grid.controller.js"></script>
+		<script src="app/listing/listing.map.controller.js"></script>
+		<script src="app/login/login.controller.js"></script>
+		<script src="app/profile/profile.addListing.controller.js"></script>
+		<script src="app/profile/profile.conversation.controller.js"></script>
+		<script src="app/profile/profile.detail.controller.js"></script>
+		<script src="app/profile/profile.detailcontroller.js.js"></script>
+		<script src="app/register/register.controller.js"></script>
+		<!-- endinject -->
+	</body>
+</html>

@@ -17,40 +17,7 @@ namespace RoomMe.Api.Controllers
     {
         private RoomMeDataContext db = new RoomMeDataContext();
 
-        // GET: api/ListingPhotoes
-        [Authorize]
-        public IHttpActionResult GetListingPhotoes()
-        {
-            var resultSet = db.ListingPhotoes.Select(lp => new
-            {
-                lp.ListingId,
-                lp.ListingPhotoId,
-                lp.Title,
-                lp.Url
-            });
-            return Ok(resultSet);
-        }
-
-        // GET: api/ListingPhotoes/5
-        [Authorize]
-        public IHttpActionResult GetListingPhoto(int id)
-        {
-            ListingPhoto listingPhoto = db.ListingPhotoes.Find(id);
-            if (listingPhoto == null)
-            {
-                return NotFound();
-            }
-
-            var resultSet = db.ListingPhotoes.Select(lp => new
-            {
-                lp.ListingId,
-                lp.ListingPhotoId,
-                lp.Title,
-                lp.Url
-            });
-            return Ok(resultSet);
-        }
-
+       
         // POST: api/ListingPhotoes
         [Authorize]
         public IHttpActionResult PostListingPhoto(ListingPhoto listingPhoto)

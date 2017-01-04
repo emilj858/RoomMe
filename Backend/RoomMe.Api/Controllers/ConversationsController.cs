@@ -21,15 +21,19 @@ namespace RoomMe.Api.Controllers
         [Authorize]
         public IHttpActionResult GetConversations()
         {
+            var username = User.Identity.Name;
 
-            var resultSet = db.Conversations.Select(c => new
-            {
-                c.ConversationId,
-                c.User1Id,
-                c.User2Id
+            var user = db.Users.FirstOrDefault(u => u.UserName == username);
 
+            var resultSet = db.Conversations
+                .Where(c => c.User1Id == user.Id || c.User2Id == user.Id)
+                .Select(c => new
+                {
+                    c.ConversationId,
+                    c.User1Id,
+                    c.User2Id
+                });
 
-            });
             return Ok(resultSet);
         }
 
@@ -53,7 +57,7 @@ namespace RoomMe.Api.Controllers
             return Ok(resultSet);
         }
 
-     
+
 
 
         // POST: api/Conversations
@@ -72,7 +76,7 @@ namespace RoomMe.Api.Controllers
             return CreatedAtRoute("DefaultApi", new { id = conversation.ConversationId }, conversation);
         }
 
-        
+
 
 
         protected override void Dispose(bool disposing)
