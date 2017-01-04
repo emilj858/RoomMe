@@ -27,12 +27,12 @@
 
         function getById() {
         	return $http
-        		.get('' + id);
+        		.get(apiUrl + '/conversations/' + id);
         }
 
         function create(obj) {
         	return $http
-        		.post('', obj);
+        		.post(apiUrl + '/conversations', obj);
         }
     }
 })();
