@@ -1,0 +1,70 @@
+(function() {
+    'use strict';
+
+    angular
+        .module('app')
+        .factory('listingFactory', listingFactory);
+
+    listingFactory.$inject = ['$http'];
+
+    /* @ngInject */
+    function listingFactory($http) {
+        var service = {
+        	getById: getById,
+        	getAll: getAll,
+            create: create,
+            update: update,
+            remove: remove
+
+        };
+        return service;
+
+        ////////////////
+
+        function getById(id) {
+        	return $http
+<<<<<<< HEAD
+        		.get('http://localhost:49798/api/listings/' + id);
+=======
+        		.get(apiUrl + '/Listings/' + id);
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
+        }
+
+        function GetAll() {
+        	return $http
+<<<<<<< HEAD
+        		.get('http://localhost:49798/api/listings');
+=======
+        		.get(apiUrl + '/Listings');
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
+        }
+
+        function create(obj) {
+        	return $http
+<<<<<<< HEAD
+        		.post('http://localhost:49798/api/listings', obj);
+=======
+        		.post(apiUrl + '/Listings', obj);
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
+        }
+
+        function update(id, obj) {
+        	return $http
+<<<<<<< HEAD
+        		.put('http://localhost:49798/api/listings/' + id, obj);
+=======
+        		.put(apiUrl + '/Listings/' + id, obj);
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
+        }
+
+        function remove(id) {
+        	return $http
+<<<<<<< HEAD
+        		.delete('http://localhost:49798/api/listings/' + id);
+=======
+        		.delete(apiUrl + '/Listings/' + id);
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
+        }
+
+    }
+})();
