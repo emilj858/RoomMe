@@ -5,18 +5,28 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['$stateParams'];
+    LoginController.$inject = ['authFactory', '$state', '$stateParams'];
 
     /* @ngInject */
-    function LoginController($stateParams) {
+    function LoginController(authFactory, $state, $stateParams) {
         var vm = this;
         vm.title = 'LoginController';
 
-        activate();
+        vm.login = login;
 
         ////////////////
 
-        function activate() {
+        function login() {
+            authFactory
+                .login(vm.username, vm.password)
+                .then(function() {
+                    $state.go('profile.detail');
+                })
+                .catch(function(error) {
+                    console.log(error);
+
+                    alert('Incorrect username or password');
+                });
         }
     }
 })();

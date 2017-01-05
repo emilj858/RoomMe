@@ -24,6 +24,29 @@
 
         function getById(id) {
         	return $http
+<<<<<<< HEAD
+        		.get('http://localhost:49798/api/users/' + id);
+        }
+        function getAll() {
+        	return $http
+        		.get('http://localhost:49798/api/users');
+        }
+        function create(obj) {
+        	return $http
+        		.post('http://localhost:49798/api/users', obj);
+        }
+        function update(obj, id) {
+        	return $http
+        		.put('http://localhost:49798/api/users/' + id, obj);
+        }
+        function remove(id) {
+        	return $http
+        		.delete('http://localhost:49798/api/users/' + id);
+        }
+        function addFavoriteToUser(listingId, userId) {
+        	return $http
+        		.post('http://localhost:49798/api/favorties/' + listingId +'/' + userId);
+=======
         		.get(apiUrl + '/Users/' + id);
         }
         function getAll() {
@@ -45,11 +68,16 @@
         function addFavoriteToUser(listingId, userId) {
         	return $http
         		.post(apiUrl + '/Favorites/' + listingId + userId);
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
         }
 
         function removeFavoriteFromUser(listingId, userId) {
         	return $http
+<<<<<<< HEAD
+        		.delete('http://localhost:49798/api/favorites/' + listingId + '/' + userId)
+=======
         		.delete(apiUrl + '/Favorites/' + listingId + userId)
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
         }
     }
 })();

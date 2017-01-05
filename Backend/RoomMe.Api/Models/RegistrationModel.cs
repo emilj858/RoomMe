@@ -5,7 +5,10 @@ namespace RoomMe.Api.Models
     public class RegistrationModel
     {
         [Required]
-        public string UserName { get; set; }
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+
         [Required]
         public string EmailAddress { get; set; }
 

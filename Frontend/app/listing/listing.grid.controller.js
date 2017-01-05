@@ -11,12 +11,18 @@
     function ListingGridController($stateParams) {
         var vm = this;
         vm.title = 'ListingGridController';
+        vm.listings = [];
 
         activate();
 
         ////////////////
 
         function activate() {
+            listingFactory
+                .getAll()
+                .then(function(response){
+                    vm.listings = response.data
+                });
         }
     }
 })();
