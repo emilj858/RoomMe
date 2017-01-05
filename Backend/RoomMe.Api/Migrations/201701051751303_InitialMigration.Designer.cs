@@ -13,7 +13,7 @@ namespace RoomMe.Api.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201701032154158_InitialMigration"; }
+            get { return "201701051751303_InitialMigration"; }
         }
         
         string IMigrationMetadata.Source

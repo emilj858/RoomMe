@@ -62,7 +62,9 @@ namespace RoomMe.Api.Migrations
                         State = Faker.Address.UsState(),
                         Zip = Faker.Address.ZipCode(),
                         Description = Faker.Company.BS(),
-                        Price = Faker.RandomNumber.Next(100, 10000)
+                        Price = Faker.RandomNumber.Next(100, 10000),
+                        Latitude = (float)new Bogus.Faker().Address.Latitude(),
+                        Longitude = (float)new Bogus.Faker().Address.Longitude()
                     };
 
                     context.Listings.Add(listing);
