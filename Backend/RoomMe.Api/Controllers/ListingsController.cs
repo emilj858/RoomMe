@@ -10,6 +10,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using RoomMe.Api.Infrastructure;
 using RoomMe.Api.Models;
+using Geocoding.Google;
+using Geocoding;
 
 namespace RoomMe.Api.Controllers
 {
@@ -132,10 +134,34 @@ namespace RoomMe.Api.Controllers
                 return BadRequest(ModelState);
             }
 
+            var username = User.Identity.Name;
+
+            var currentUser = db.Users.FirstOrDefault(u => u.UserName == username);
+
+            // this is where we'll add lat/long
+            IGeocoder geocoder = new GoogleGeocoder();
+            var addresses = geocoder.Geocode($"{listing.Address}, {listing.City} {listing.State} {listing.Zip}");
+
+            listing.UserId = currentUser.Id;
+            listing.Latitude = addresses.First().Coordinates.Latitude;
+            listing.Longitude = addresses.First().Coordinates.Longitude;
+
             db.Listings.Add(listing);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = listing.ListingId }, listing);
+            return CreatedAtRoute("DefaultApi", new { id = listing.ListingId }, new
+            {
+                listing.ListingId,
+                listing.UserId,
+                listing.Latitude,
+                listing.Longitude,
+                listing.Address,
+                listing.City,
+                listing.Description,
+                listing.Price,
+                listing.State,
+                listing.Zip
+            });
         }
 
         // DELETE: api/Listings/5
