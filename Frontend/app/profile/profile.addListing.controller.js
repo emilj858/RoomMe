@@ -12,6 +12,7 @@
         var vm = this;
         vm.title = 'ProfileAddListing';
         vm.addListing = addListing;
+        vm.address;
 
         ///////////////////
 
@@ -19,6 +20,10 @@
             listingFactory
             .create(listing);
 
+        }
+
+        function addCoordiantes(address){
+            vm.address = address.address + ", " + address.city + " " + address.state + " " + address.zip;
         }
     }
 })();

@@ -29,6 +29,8 @@ namespace RoomMe.Api.Controllers
                 l.State,
                 l.Zip,
                 l.Price,
+                l.Longitude,
+                l.Latitude,
                 l.Description,
                 ListingPhotoes = l.ListingPhotoes.Select(lp => new
                 {
@@ -60,6 +62,8 @@ namespace RoomMe.Api.Controllers
                 l.State,
                 l.Zip,
                 l.Price,
+                l.Longitude,
+                l.Latitude,
                 l.Description,
                 ListingPhotoes = l.ListingPhotoes.Select(lp => new
                 {
@@ -92,6 +96,8 @@ namespace RoomMe.Api.Controllers
             dbListing.State = listing.State;
             dbListing.Zip = listing.Zip;
             dbListing.Price = listing.Price;
+            dbListing.Longitude = listing.Longitude;
+            dbListing.Latitude = listing.Latitude;
             dbListing.Description = listing.Description;
 
 
