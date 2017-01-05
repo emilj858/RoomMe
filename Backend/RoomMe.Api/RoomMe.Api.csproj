@@ -184,9 +184,9 @@
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Infrastructure\DataContext.cs" />
-    <Compile Include="Migrations\201701032154158_InitialMigration.cs" />
-    <Compile Include="Migrations\201701032154158_InitialMigration.Designer.cs">
-      <DependentUpon>201701032154158_InitialMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201701051751303_InitialMigration.cs" />
+    <Compile Include="Migrations\201701051751303_InitialMigration.Designer.cs">
+      <DependentUpon>201701051751303_InitialMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Conversation.cs" />
@@ -216,8 +216,8 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701032154158_InitialMigration.resx">
-      <DependentUpon>201701032154158_InitialMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201701051751303_InitialMigration.resx">
+      <DependentUpon>201701051751303_InitialMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
