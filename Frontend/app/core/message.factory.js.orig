@@ -1,0 +1,38 @@
+(function() {
+    'use strict';
+
+    angular
+        .module('app')
+        .factory('messageFactory', messageFactory);
+
+    messageFactory.$inject = ['$http'];
+
+    /* @ngInject */
+    function messageFactory($http) {
+        var service = {
+            getAll: getAll,
+            create: create
+        };
+        return service;
+
+        ////////////////
+
+        function getAll() {
+        	return $http
+<<<<<<< HEAD
+        		.get('http://localhost:49798/api/messages');
+=======
+        		.get(apiUrl + '/Messages');
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
+        }
+
+        function create(obj) {
+        	return $http
+<<<<<<< HEAD
+        		.post('http://localhost:49798/api/messages', obj)
+=======
+        		.post(apiUrl + '/Messages', obj)
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
+        }
+    }
+})();

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,11 @@ namespace RoomMe.Api.Models
 {
     public class Listing
     {
+        public Listing()
+        {
+            Favorites = new Collection<Favorite>();
+            ListingPhotoes = new Collection<ListingPhoto>();
+        }
         public int ListingId { get; set; }
         [Required]
         public string UserId { get; set; }
@@ -17,7 +23,7 @@ namespace RoomMe.Api.Models
         public string State { get; set; }
         [Required]
         public string Zip { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         public decimal Longitude { get; set; }
         public decimal Latitude { get; set; }
         public string Description { get; set; }
