@@ -24,15 +24,15 @@
 
         function getById(id) {
         	return $http
-        		.get(apiUrl + '/Users/' + id);
+        		.get(apiUrl + '/users/' + id);
         }
         function getAll() {
         	return $http
-        		.get(apiUrl + '/Users');
+        		.get(apiUrl + '/users');
         }
         function create(obj) {
         	return $http
-        		.post(apiUrl + '/Users', obj);
+        		.post(apiUrl + '/users', obj);
         }
         function update(obj, id) {
         	return $http
@@ -40,16 +40,16 @@
         }
         function remove(id) {
         	return $http
-        		.delete(apiUrl + '/Users/' + id);
+        		.delete(apiUrl + '/users/' + id);
         }
         function addFavoriteToUser(listingId, userId) {
         	return $http
-        		.post(apiUrl + '/Favorites/' + listingId + userId);
+        		.post(apiUrl + '/favorites/' + listingId + userId);
         }
 
         function removeFavoriteFromUser(listingId, userId) {
         	return $http
-        		.delete(apiUrl + '/Favorites/' + listingId + userId)
+        		.delete(apiUrl + '/favorites/' + listingId + userId)
         }
     }
 })();

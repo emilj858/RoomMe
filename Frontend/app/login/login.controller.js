@@ -20,7 +20,7 @@
             authFactory
                 .login(vm.username, vm.password)
                 .then(function() {
-                    $state.go('profile.detail');
+                    $state.go('home');
                 })
                 .catch(function(error) {
                     console.log(error);

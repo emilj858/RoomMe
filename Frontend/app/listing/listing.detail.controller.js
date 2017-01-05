@@ -5,15 +5,16 @@
         .module('app')
         .controller('ListingDetailController', ListingDetailController);
 
-    ListingDetailController.$inject = ['$stateParams', 'listingPhotoFactory', 'userFactory', 'listingFactory'];
+    ListingDetailController.$inject = ['$stateParams', 'userFactory', 'listingFactory'];
 
     /* @ngInject */
-    function ListingDetailController($stateParams, listingPhotoFactory, userFactory, listingFactory) {
+    function ListingDetailController($stateParams, userFactory, listingFactory) {
         var vm = this;
         vm.title = 'ListingDetailController';
         vm.currentListing = [];
-        vm.photoes = [];
-
+        vm.currentListingUser;
+        vm.addFavorite = addFavorite;
+        vm.deleteFavorite = deleteFavorite;
 
         activate();
 
@@ -27,8 +28,21 @@
         		});
         	
         	userFactory
-        		.getById(userId);
+        		.getById(vm.currentListing.userId)
+                .then(function(response){
+                    vm.currentListingUser = response.data;
+    // If this breaks add $q 
+                });
+
+        }
+        function addFavorite(listingId, userId) {
+            userFactory
+                .addFavoriteToUser(listingId, userId);
         }
 
+        function deleteFavorite(listingId, userId) {
+            userFactory
+                .removeFavoriteFromUser(listingId, userId);
+        }
     }
 })();

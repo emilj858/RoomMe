@@ -13,7 +13,7 @@
         vm.title = 'HomeController';
 
        
-
+        // If we use UI view delete this otherwise we need a function for the search button
         ////////////////
 
     }

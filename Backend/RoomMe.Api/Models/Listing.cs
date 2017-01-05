@@ -24,8 +24,8 @@ namespace RoomMe.Api.Models
         [Required]
         public string Zip { get; set; }
         public decimal Price { get; set; }
-        public float Latitude { get; set; }
-        public float Longitude { get; set; }
+        public decimal Longitude { get; set; }
+        public decimal Latitude { get; set; }
         public string Description { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<Favorite> Favorites { get; set; }
