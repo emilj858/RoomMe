@@ -1,3 +1,4 @@
+<!--camerons login
 <form ng-submit="loginCtrl.login()">
     <div class="form-group">
         <label for="">Username</label>
@@ -8,4 +9,142 @@
         <input type="password" class="form-control" ng-model="loginCtrl.password">
     </div>
     <button class="btn btn-primary" type="submit">Login</button>
-</form>
+</form> -->
+<section id="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="block">
+                    <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Login</h2>
+                    <div class="contact-form">
+                        <form ng-submit="loginCtrl.login()" id="contact-form" method="post" action="sendmail.php" role="form">
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                                <input type="email" placeholder="Email" class="form-control" name="username" id="username" ng-model="loginCtrl.username" >
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+                                <input type="password" placeholder="Password" class="form-control" name="password" id="password" ng-model="loginCtrl.password">
+                            </div>
+                            <div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
+                                <input type="submit" id="contact-submit" class="btn btn-default btn-send" value="Login">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="map-area">
+                    <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Not a User? Register Here!</h2>
+                    <div class="contact-form">
+                        <form ng-submit="registerCtrl.register()" id="contact-form" method="post" action="sendmail.php" role="form">
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                                <input type="text" placeholder="First Name" class="form-control" name="firstName" id="firstName">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+                                <input type="text" placeholder="Last Name" class="form-control" name="lastName" id="lastName">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                                <input type="email" placeholder="Email" class="form-control" name="email" id="email">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+                                <input type="password" placeholder="Password" class="form-control" name="password" id="password">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                                <input type="password" placeholder="Confrim Password" class="form-control" name="confirmPassword" id="confirmPassword">
+                            </div>
+                            <div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
+                                <input type="submit" id="contact-submit" class="btn btn-default btn-send" value="Create Account!">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="row address-details">
+        <div class="col-md-3">
+            <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".3s">
+                <i class="ion-ios-location-outline"></i>
+                <h5>125 , Kings Street,Melbourne <br>United Kingdom,600562</h5>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="address wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".5s">
+                <i class="ion-ios-location-outline"></i>
+                <h5>125 , Kings Street,Melbourne <br>United Kingdom,600562</h5>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="email wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".7s">
+                <i class="ion-ios-email-outline"></i>
+                <p>support@themefisher.com
+                    <br>support@themefisher.com</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="phone wow fadeInLeft" data-wow-duration="500ms" data-wow-delay=".9s">
+                <i class="ion-ios-telephone-outline"></i>
+                <p>+07 052 245 022
+                    <br>+07 999 999 999</p>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<!-- 
+        ================================================== 
+            Call To Action Section Start
+        ================================================== -->
+<section id="call-to-action">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="500ms">INTERESTED IN WORKING TOGETHER? ?</h1>
+                            <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="500ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,</br>possimus commodi, fugiat magnam temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
+                            <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="500ms">Contact With Me</a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 
+        ================================================== 
+            Footer Section Start
+        ================================================== -->
+        <footer id="footer">
+            <div class="container">
+                <div class="col-md-8">
+                    <p class="copyright">Copyright: <span>2015</span> . Design and Developed by <a href="http://www.Themefisher.com">Themefisher</a></p>
+                </div>
+                <div class="col-md-4">
+                    <!-- Social Media -->
+                    <ul class="social">
+                        <li>
+                            <a href="#" class="Facebook">
+                                <i class="ion-social-facebook"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="Twitter">
+                                <i class="ion-social-twitter"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="Linkedin">
+                                <i class="ion-social-linkedin"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="Google Plus">
+                                <i class="ion-social-googleplus"></i>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </footer>
