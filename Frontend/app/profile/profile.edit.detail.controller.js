@@ -14,10 +14,24 @@
 
         ////////////////
 
+       activate();
+
+        ////////////////
+
+        function activate() {
+            userFactory
+                .getById($stateParams.id)
+                .then(function(response){
+                    vm.currentUser = response.data;
+                });
+            }
+
+
         function editProfile(userId, user) {
             userFactory
                 .update(userId, user);
 
         }
+
     }
 })();
