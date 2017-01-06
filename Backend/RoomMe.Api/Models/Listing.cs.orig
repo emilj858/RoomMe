@@ -15,6 +15,7 @@ namespace RoomMe.Api.Models
             ListingPhotoes = new Collection<ListingPhoto>();
         }
         public int ListingId { get; set; }
+        [Required]
         public string UserId { get; set; }
         [Required]
         public string Address { get; set; }
@@ -22,9 +23,15 @@ namespace RoomMe.Api.Models
         public string State { get; set; }
         [Required]
         public string Zip { get; set; }
+<<<<<<< HEAD
+        public string Price { get; set; }
+        public decimal Longitude { get; set; }
+        public decimal Latitude { get; set; }
+=======
         public decimal Price { get; set; }
-        public double Longitude { get; set; }
-        public double Latitude { get; set; }
+        public float Latitude { get; set; }
+        public float Longitude { get; set; }
+>>>>>>> b77affc1d3bf435f23052230c50e146a59a2588d
         public string Description { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<Favorite> Favorites { get; set; }

@@ -21,14 +21,19 @@ namespace RoomMe.Api.Controllers
         [Authorize]
         public IHttpActionResult GetMessages()
         {
-            var resultSet = db.Messages.Select(m => new
-            {
-                m.ConversationId,
-                m.MessageId,
-                m.Text,
-                m.UserId,
-                m.CreatedAt
-            });
+            var username = User.Identity.Name;
+            var user = db.Users.FirstOrDefault(u => u.UserName == username);
+
+            var resultSet = db.Messages.Where(m => m.UserId == user.Id)
+
+                .Select(m => new
+                {
+                    m.ConversationId,
+                    m.MessageId,
+                    m.Text,
+                    m.UserId,
+                    m.CreatedAt
+                });
             return Ok(resultSet);
         }
 

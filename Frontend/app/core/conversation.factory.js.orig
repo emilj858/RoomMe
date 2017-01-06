@@ -27,12 +27,20 @@
 
         function getById() {
         	return $http
+<<<<<<< HEAD
+        		.get('http://localhost:49798/api/conversations/' + id);
+=======
         		.get(apiUrl + '/conversations/' + id);
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
         }
 
         function create(obj) {
         	return $http
+<<<<<<< HEAD
+        		.post('http://localhost:49798/api/conversations', obj);
+=======
         		.post(apiUrl + '/conversations', obj);
+>>>>>>> f9ad7ccb2d87920088bf27b0bd439292115405db
         }
     }
 })();

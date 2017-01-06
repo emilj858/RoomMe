@@ -96,7 +96,9 @@ namespace RoomMe.Api.Migrations
                         City = c.String(),
                         State = c.String(),
                         Zip = c.String(nullable: false),
-                        Price = c.String(),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Longitude = c.Single(nullable: false),
+                        Latitude = c.Single(nullable: false),
                         Description = c.String(),
                     })
                 .PrimaryKey(t => t.ListingId)
