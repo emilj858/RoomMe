@@ -37,7 +37,13 @@
                 secure: true
             })
 
-            .state('conversation', {
+            .state('profile.editListing', {
+                url: '/editListing',
+                controller: 'EditListingController as editListingCtrl',
+                templateUrl: '/app/profile/profile.editListing.html',
+                secure: true
+            })
+
                 url: '/conversation',
                 abstract: true,
                 templateUrl: '<div ui-view></div>',
