@@ -3,12 +3,12 @@
 
     angular
         .module('app')
-        .factory('listingFactory', listingFactory);
+        .factory('listingFactory', listingFactory)
 
-    listingFactory.$inject = ['$http'];
+    listingFactory.$inject = ['$http', 'apiUrl'];
 
     /* @ngInject */
-    function listingFactory($http) {
+    function listingFactory($http, apiUrl) {
         var service = {
         	getById: getById,
         	getAll: getAll,
@@ -26,9 +26,10 @@
         		.get(apiUrl + '/listings/' + id);
         }
 
-        function GetAll() {
+        function getAll() {
         	return $http
         		.get(apiUrl + '/listings');
+                console.log("working")
         }
 
         function create(obj) {

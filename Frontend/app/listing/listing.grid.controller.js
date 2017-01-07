@@ -5,10 +5,10 @@
         .module('app')
         .controller('ListingGridController', ListingGridController);
 
-    ListingGridController.$inject = ['$stateParams', 'listingFactory', 'ngMap'];
+    ListingGridController.$inject = ['$stateParams', 'listingFactory'];
 
     /* @ngInject */
-    function ListingGridController($stateParams, listingFactory, ngMap) {
+    function ListingGridController($stateParams, listingFactory) {
         var vm = this;
         vm.title = 'ListingGridController';
         vm.listings = [];
@@ -22,6 +22,7 @@
                 .getAll()
                 .then(function(response){
                     vm.listings = response.data;
+                    console.log("hello, hey");
                 });
 
                 //If we want current locaation

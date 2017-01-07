@@ -5,10 +5,10 @@
         .module('app')
         .factory('messageFactory', messageFactory);
 
-    messageFactory.$inject = ['$http'];
+    messageFactory.$inject = ['$http', 'apiUrl'];
 
     /* @ngInject */
-    function messageFactory($http) {
+    function messageFactory($http, apiUrl) {
         var service = {
             getAll: getAll,
             create: create

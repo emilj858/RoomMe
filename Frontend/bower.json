@@ -1,34 +1,35 @@
 {
-    "name": "room-me",
-    "description": "",
-    "main": "gulpfile.js",
-    "authors": [
-        "Cameron Wilby <cameron@origincodeacademy.com>"
-    ],
-    "license": "ISC",
-    "homepage": "https://github.com/emilj858/RoomMe",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components",
-        "test",
-        "tests"
-    ],
-    "overrides": {
-        "font-awesome": {
-            "main": "css/font-awesome.css"
-        },
-        "bootstrap": {
-            "main": [
-                "dist/css/bootstrap.css",
-                "dist/js/bootstrap.js"
-            ]
-        }
+  "name": "room-me",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "Cameron Wilby <cameron@origincodeacademy.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/emilj858/RoomMe",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "overrides": {
+    "font-awesome": {
+      "main": "css/font-awesome.css"
     },
-    "dependencies": {
-        "angular-local-storage": "^0.5.2",
-        "bootstrap": "^3.3.7",
-        "angular-ui-router": "^0.3.2",
-        "angular-toastr": "^2.1.1"
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
     }
+  },
+  "dependencies": {
+    "angular-local-storage": "^0.5.2",
+    "bootstrap": "^3.3.7",
+    "angular-ui-router": "^0.3.2",
+    "angular-toastr": "^2.1.1"
+  },
+  "private": true
 }
