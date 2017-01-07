@@ -43,7 +43,7 @@
                 templateUrl: '/app/profile/profile.editListing.html',
                 secure: true
             })
-
+            .state('conversation', {
                 url: '/conversation',
                 abstract: true,
                 templateUrl: '<div ui-view></div>',

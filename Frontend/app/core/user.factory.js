@@ -5,10 +5,10 @@
         .module('app')
         .factory('userFactory', userFactory);
 
-    userFactory.$inject = ['$http'];
+    userFactory.$inject = ['$http', 'apiUrl'];
 
     /* @ngInject */
-    function userFactory($http) {
+    function userFactory($http, apiUrl) {
         var service = {
             getById: getById,
             getAll: getAll,
