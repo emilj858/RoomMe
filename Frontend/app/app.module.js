@@ -87,12 +87,6 @@
                 secure: true
             })
 
-            .state('register', {
-                url: '/register',
-                controller: 'RegisterController as registerCtrl',
-                templateUrl: '/app/register/register.html'
-            })
-
             .state('login', {
                 url: '/login',
                 controller: 'LoginController as loginCtrl',

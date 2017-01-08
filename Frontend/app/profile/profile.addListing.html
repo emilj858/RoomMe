@@ -3,27 +3,27 @@
         <div class="map-area">
             <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Add Listing</h2>
             <div class="contact-form">
-                <form ng-submit="registerCtrl.register()" id="contact-form" method="post" action="sendmail.php" role="form">
+                <form id="contact-form" role="form">
                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
-                        <input type="text" placeholder="Address" class="form-control" name="Street Address">
+                        <input ng-model="addListingCtrl.newListing.address" type="text" placeholder="Address" class="form-control" name="Street Address">
                     </div>
                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
-                        <input type="text" placeholder="City" class="form-control" name="City">
+                        <input ng-model="addListingCtrl.newListing.city" type="text" placeholder="City" class="form-control" name="City">
                     </div>
                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
-                        <input type="text" placeholder="State" class="form-control" name="State">
+                        <input ng-model="addListingCtrl.newListing.state" type="text" placeholder="State" class="form-control" name="State">
                     </div>
                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
-                        <input type="text" placeholder="Zip Code" class="form-control" name="Zip">
+                        <input ng-model="addListingCtrl.newListing.zip" type="text" placeholder="Zip Code" class="form-control" name="Zip">
                     </div>
                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
-                        <input type="password" placeholder="Price" class="form-control" name="Price">
+                        <input ng-model="addListingCtrl.newListing.price" type="text" placeholder="Price" class="form-control" name="Price">
                     </div>
                     <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
-                        <textarea class=" form-control" rows="8" placeholder="Description"></textarea>
+                        <textarea ng-model="addListingCtrl.newListing.description" class=" form-control" rows="8" placeholder="Description"></textarea>
                     </div>
                     <div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
-                        <input type="submit" id="contact-submit" class="btn btn-default btn-send" value="Add Listing">
+                        <button ng-click="addListingCtrl.addListing()" class="btn btn-primary">+ Add Listing</button>
                     </div>
             </div>
             </form>

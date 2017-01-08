@@ -14,6 +14,16 @@
 
         vm.login = login;
 
+        vm.registration = {
+            firstName: '',
+            lastName: '',
+            emailAddress: '',
+            password: '',
+            confirmPassword: ''
+        };
+
+        vm.register = register;
+
         ////////////////
 
         function login() {
@@ -26,6 +36,23 @@
                     console.log(error);
 
                     alert('Incorrect username or password');
+                });
+        }
+
+        function register() {
+            console.log(vm.registration);
+            authFactory
+                .register(vm.registration)
+                .then(function(response) {
+                    alert('Successful registration! Now login');
+                    authFactory
+                        .login(vm.registration.emailAddress, vm.registration.password)
+                        .then(function() {
+                            $state.go('profile.detail');
+                        });
+                })
+                .catch(function(error) {
+                    alert('Bad registration.');
                 });
         }
     }
