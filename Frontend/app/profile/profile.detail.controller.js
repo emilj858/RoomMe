@@ -18,15 +18,17 @@
         ////////////////
 
         function activate() {
-            conversationFactory
-                .getAll()
-                .then(function(response) {
-                    vm.conversations = response.data;
-                });
+            // conversationFactory
+            //     .getAll()
+            //     .then(function(response) {
+            //         vm.conversations = response.data;
+            //     });
+                console.log('hellllllo')
             userFactory
                 .getById($stateParams.id)
                 .then(function(response){
                     vm.currentUser = response.data;
+                    console.log(vm.currentUser);
                 });
 
         }

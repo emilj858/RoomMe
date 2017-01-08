@@ -3,22 +3,32 @@
 
     angular
         .module('app')
-        .controller('ProfileAddListing', ProfileAddListing);
+        .controller('AddListingController', AddListingController);
 
-    ProfileAddListing.$inject = ['$stateParams', 'listingFactory'];
+    AddListingController.$inject = ['$stateParams', 'listingFactory'];
 
     /* @ngInject */
-    function ProfileAddListing($stateParams, listingFactory) {
+    function AddListingController($stateParams, listingFactory) {
         var vm = this;
-        vm.title = 'ProfileAddListing';
+        vm.title = 'AddListingController';
         vm.addListing = addListing;
-        vm.address;
+        
+        vm.newListing = {
+            price: '',
+            address: '',
+            city: '',
+            state: '',
+            zip: '',
+            description: ''
+        };
 
         ///////////////////
 
-        function addListing(listing) {
+        function addListing() {
             listingFactory
-            .create(listing);
+            .create(vm.newListing);
+            console.log("successful");
+            vm.newListing = {};
 
         }
 
