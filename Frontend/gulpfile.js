@@ -4,7 +4,7 @@ const wiredep = require('wiredep').stream;
 const browserSync = require('browser-sync');
 
 /* injects the files that you create */
-gulp.task('inject', function() {
+gulp.task('inject', ['inject:bower'], function() {
     var sources = gulp.src([                                     // Define the files we'd like to inject
         './app/**/*.module.js',                         // *.module.js files go first
         './app/**/*.js',                                // *.js files come next
@@ -17,7 +17,7 @@ gulp.task('inject', function() {
 });
 
 /* injects your bower dependencies */
-gulp.task('inject:bower', ['inject'], function() {
+gulp.task('inject:bower', function() {
     return gulp.src('./index.html')                     // Read your index.html
         .pipe(wiredep())                                // Pipe it through wiredep
         .pipe(gulp.dest('./'));                         // Write it out to ./

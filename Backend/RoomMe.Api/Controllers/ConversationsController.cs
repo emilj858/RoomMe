@@ -47,14 +47,19 @@ namespace RoomMe.Api.Controllers
             {
                 return NotFound();
             }
-            var resultSet = db.Conversations.Select(c => new
+            
+            return Ok(new
             {
-                c.ConversationId,
-                c.User1Id,
-                c.User2Id
-
+                conversation.ConversationId,
+                Messages = conversation.Messages.Select(m => new
+                {
+                    m.MessageId,
+                    m.CreatedAt,
+                    m.User.UserName,
+                    m.UserId,
+                    m.Text
+                })
             });
-            return Ok(resultSet);
         }
 
 

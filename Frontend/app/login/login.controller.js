@@ -5,10 +5,10 @@
         .module('app')
         .controller('LoginController', LoginController);
 
-    LoginController.$inject = ['authFactory', '$state', '$stateParams'];
+    LoginController.$inject = ['authFactory', '$state', '$stateParams', 'SweetAlert'];
 
     /* @ngInject */
-    function LoginController(authFactory, $state, $stateParams) {
+    function LoginController(authFactory, $state, $stateParams, SweetAlert) {
         var vm = this;
         vm.title = 'LoginController';
 
@@ -40,11 +40,11 @@
         }
 
         function register() {
-            console.log(vm.registration);
+            console.log(vm.registration)
             authFactory
                 .register(vm.registration)
                 .then(function(response) {
-                    alert('Successful registration! Now login');
+                    SweetAlert.swal('Good job!', 'You created an account.', 'success');
                     authFactory
                         .login(vm.registration.emailAddress, vm.registration.password)
                         .then(function() {

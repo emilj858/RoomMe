@@ -25,7 +25,7 @@
    				.get(apiUrl + '/conversations');
         }
 
-        function getById() {
+        function getById(id) {
         	return $http
         		.get(apiUrl + '/conversations/' + id);
         }

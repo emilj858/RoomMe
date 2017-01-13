@@ -21,6 +21,99 @@ namespace RoomMe.Api.Controllers
             _userManager = new UserManager<User>(store);
         }
 
+        //GET: api/me
+        [Authorize, Route("api/me")]
+        public IHttpActionResult GetMe()
+        {
+            string userName = User.Identity.Name;
+            var user = db.Users.FirstOrDefault(u => u.UserName == userName);
+            return Ok(new
+            {
+                user.Id,
+                user.FirstName,
+                user.LastName,
+                user.Email,
+                Listings = user.Listings.Select(l => new
+                {
+                    l.Address,
+                    l.City,
+                    l.State,
+                    l.Description,
+                    l.Zip,
+                    l.Price,
+                    l.ListingId,
+                    l.UserId,
+                    ListingPhotoes = l.ListingPhotoes.Select(lp => new
+                    {
+                        lp.Url,
+                        lp.Title,
+                        lp.ListingId,
+                        lp.ListingPhotoId
+                    })
+                   
+                }),
+                FavoriteListings = user.Favorites.Select(f => new
+                {
+                    f.Listing.Address,
+                    f.Listing.City,
+                    f.Listing.State,
+                    f.Listing.Zip,
+                    f.Listing.Price,
+                    f.Listing.ListingId,
+                    f.Listing.UserId
+                }),
+                Conversations = user.SentConversations
+                .Concat(user.ReceivedConversations)
+                .Select(c => new
+                {
+                    c.ConversationId,
+                    Messages = c.Messages.Select(m => new {
+                        m.ConversationId,
+                        m.CreatedAt,
+                        m.MessageId,
+                        m.Text,
+                        m.User.UserName
+                    }),
+                    User1UserName = c.User1.UserName,
+                    c.User1Id,
+                    User2UserName = c.User2.UserName,
+                    c.User2Id
+                })
+                
+            });
+        }
+
+        // POST: api/me/favorites/5
+        [Authorize, HttpPost, Route("api/me/favorite/{listingId}")]
+        public IHttpActionResult AddFavorite(int listingId)
+        {
+            string userName = User.Identity.Name;
+            var user = db.Users.FirstOrDefault(u => u.UserName == userName);
+
+            db.Favorites.Add(new Favorite { UserId = user.Id, ListingId = listingId });
+
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        // DELETE: api/me/favorites/5
+        [Authorize, HttpDelete, Route("api/me/favorite/{listingId}")]
+        public IHttpActionResult RemoveFavorite(int listingId)
+        {
+            string userName = User.Identity.Name;
+            var user = db.Users.FirstOrDefault(u => u.UserName == userName);
+
+            var favorite = db.Favorites.Find(listingId, user.Id);
+
+            db.Favorites.Remove(favorite);
+
+            db.SaveChanges();
+
+            return Ok();
+        }
+        
+
         //GET: api/Users
         [Authorize]
         public IHttpActionResult GetUsers()

@@ -5,14 +5,6 @@
                 <div class="col-md-12">
                     <div class="block">
                         <h2>Rooms For Rent</h2>
-                        <ol class="breadcrumb">
-                            <li>
-                                <a ui-sref="listing.map">
-                                    <i class="ion-map"></i> Map
-                                </a>
-                            </li>
-                            <li class="active"><i class="ion-ios-list-outline"></i> List</li>
-                        </ol>
                     </div>
                 </div>
             </div>
@@ -38,15 +30,14 @@
     <br>
     <section id="" class="">
         <div class="row">
-            <div style="" class="col-sm-4 col-xs-12" ng-repeat-start="listing in listingGridCtrl.listings">
+            <div style="" class="col-sm-4 col-xs-12" ng-repeat-start="listing in listingGridCtrl.listings | limitTo:21 " ui-sref="listing.detail({id:{{listing.listingId}}})">
                 <!-- <a>Address:{{}} Price:{{}}</a> -->
-                <div class="panel panel-info">
+                <div class="panel panel-primary">
+                    <div class="panel-heading" style="text-align: center;"><b>${{listing.price}}</b></div>
                     <div class="panel-body">
-                        <div class="form-group overlay">
-                            <img ng-src="{{listing.listingPhotoes[2].url}}" class="img-responsive" height="" alt="this is a title">
-                        </div>
-                        <div class="form-group panel-footer"> <a>${{listing.price}} | {{listing.address}} <br>{{listing.city}}, {{listing.state}} {{listing.zip}}</a></div>
+                        <img ng-src="{{listing.listingPhotoes[0].url}}" class="img-responsive" alt="this is a title" style="cursor: pointer; height: 300px;">
                     </div>
+                    <div class="form-group panel-footer" style="cursor: pointer; text-align: center;"> <a><b>${{listing.price}} | {{listing.address}} <br>{{listing.city}}, {{listing.state}} {{listing.zip}}</b></a></div>
                 </div>
             </div>
             <div style="" ng-repeat-end class="clearfix" ng-if="$index % 3 == 2"></div>

@@ -46,10 +46,23 @@ namespace RoomMe.Api.Controllers
                 return BadRequest(ModelState);
             }
 
+            var username = User.Identity.Name;
+            var user = db.Users.FirstOrDefault(u => u.UserName == username);
+
+            message.CreatedAt = DateTime.Now;
+            message.UserId = user.Id;
+
             db.Messages.Add(message);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = message.MessageId }, message);
+            return CreatedAtRoute("DefaultApi", new { id = message.MessageId }, new
+            {
+                message.ConversationId,
+                message.CreatedAt,
+                message.MessageId,
+                message.Text,
+                message.UserId
+            });
         }
 
         protected override void Dispose(bool disposing)

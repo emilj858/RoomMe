@@ -2,9 +2,11 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'LocalStorageModule'])
+        .module('app', ['ui.router', 'LocalStorageModule', 'oitozero.ngSweetAlert', 'angular-filepicker', 'ngMaps'])
         .value('apiUrl', 'http://localhost:49798/api')
-        .config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+        .config(function(filepickerProvider, $stateProvider, $urlRouterProvider, $httpProvider) {
+
+            filepickerProvider.setKey('AZk5feTEwRPeVhuwn1JV2z');
 
             $httpProvider.interceptors.push('authInterceptorService');
 
@@ -46,18 +48,18 @@
             .state('conversation', {
                 url: '/conversation',
                 abstract: true,
-                templateUrl: '<div ui-view></div>',
+                template: '<div ui-view></div>',
                 secure: true
             })
 
             .state('conversation.grid', {
                 url: '/grid',
-                controller: 'CoversationGridController as conversationGridCtrl',
+                controller: 'ConversationGridController as conversationGridCtrl',
                 templateUrl: '/app/conversation/conversation.grid.html'
             })
 
             .state('conversation.detail', {
-                url: '/detail',
+                url: '/detail?id?userId',
                 controller: 'ConversationDetailController as conversationDetailCtrl',
                 templateUrl: '/app/conversation/conversation.detail.html'
             })

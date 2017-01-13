@@ -5,33 +5,43 @@
                 <div class="block">
                     <h2>Listing Information</h2>
                     <div class="portfolio-meta">
-                        <span>Adderss{{}}</span>|
-                        <span> Price:{{}}</span>
+                        <h3>
+                            <span>{{listingDetailCtrl.currentListing.address}}, {{listingDetailCtrl.currentListing.city}} {{listingDetailCtrl.currentListing.state}} {{listingDetailCtrl.currentListing.zip}}</span>|
+                            <span>${{listingDetailCtrl.currentListing.price}}</span>
+                            </h3>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+<br>
+<button type="button" class="btn btn-info" ng-click="listingDetailCtrl.addFavorite(listingDetailCtrl.currentListing.listingId)">Add To Favorites</button>
+<p align="center!important">
+    <h1>{{listingDetailCtrl.currentListing.description}}</h1></p>
 <!--/#Page header-->
-<section style = "margin-top:50px; margin-bottom: 50px;">
-    <div class="">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="post-img">
-                    <img class="img-responsive" alt="" src="images/blog/post-1.jpg">
+<section style="margin-top:50px; margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="post-img">
+                <div class="row">
+                    <div style="" class="col-md-4" ng-repeat-start="listingPhoto in listingDetailCtrl.currentListing.listingPhotoes | limitTo:3">
+                        <!-- <a>Address:{{}} Price:{{}}</a> -->
+                        <div class="panel panel-body">
+                            <div class="">
+                                <img ng-src="{{listingPhoto.url}}" class="img-responsive" style="height: 300px; width: 100%;" alt="this is a title" style="cursor: pointer; align-content: center;">
+                            </div>
+                        </div>
+                    </div>
+                    <div style="" ng-repeat-end></div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <label>Description</label>
-                <p>This room is great, lla sad lsa dlsad lsadl sadl sadl sadls al sda dls alsd ad lslads lad  slasd la ds, wohoo ooooo ooooo ooo oo, yeah haha ha hh ahaha ah h ha ha hahh aha ,nice</p>
-            </div>
-            </form>
         </div>
     </div>
-    </div>
-    </div>
 </section>
+<div class="map" >
+
+</div>
 <!--
             ==================================================
             Call To Action Section Start
@@ -41,24 +51,22 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="block">
-                    <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="300ms">WANT TO RENT THIS ROOM ?</h1>
-                                <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="300ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,</br>possimus commodi, fugiat magnam temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
-                                <a ui-sref="profile.detail" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="300ms">INQUIRE ABOUT ROOM</a>
-                            </div>
-                        </div>
-                        
-                    </div>
+                    <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="300ms">WANT TO RENT THIS ROOM ?</h2>
+                    <a ui-sref="conversation.detail({ userId: listingDetailCtrl.currentListing.userId })" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="300ms">CONTACT HOST</a>
                 </div>
-            </section>
-            <!--
+            </div>
+        </div>
+    </div>
+</section>
+<!--
             ==================================================
             Footer Section Start
             ================================================== -->
-            <footer id="footer">
-                <div class="container">
-                    <div class="col-md-8">
-                        <p class="copyright">Copyright: <span>2017</span> . Design and Developed by TheRoomMeTeam</p>
-                    </div>
-                    
-                </div>
-                </footer>
+<footer id="footer">
+    <div class="container">
+        <div class="col-md-8">
+            <p class="copyright">Copyright: <span>2017</span> . Design and Developed by TheRoomMeTeam</p>
+        </div>
+    </div>
+</footer>
+</div>

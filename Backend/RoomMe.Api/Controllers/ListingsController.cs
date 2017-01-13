@@ -22,7 +22,7 @@ namespace RoomMe.Api.Controllers
         // GET: api/Listings
         public IHttpActionResult GetListings()
         {
-            var resultSet = db.Listings.Select(l => new
+            var resultSet = db.Listings.OrderByDescending(l => l.ListingId).Select(l => new
             {
                 l.ListingId,
                 l.UserId,
@@ -55,25 +55,28 @@ namespace RoomMe.Api.Controllers
             {
                 return NotFound();
             }
-            var resultSet = db.Listings.Select(l => new
+            var resultSet =  new
             {
-                l.ListingId,
-                l.UserId,
-                l.Address,
-                l.City,
-                l.State,
-                l.Zip,
-                l.Price,
-                l.Longitude,
-                l.Latitude,
-                l.Description,
-                ListingPhotoes = l.ListingPhotoes.Select(lp => new
+                listing.ListingId,
+                listing.UserId,
+                listing.User.FirstName,
+                listing.User.LastName,
+                listing.User.Email,
+                listing.Address,
+                listing.City,
+                listing.State,
+                listing.Zip,
+                listing.Price,
+                listing.Longitude,
+                listing.Latitude,
+                listing.Description,
+                ListingPhotoes = listing.ListingPhotoes.Select(lp => new
                 {
                     lp.ListingPhotoId,
                     lp.Url,
                     lp.Title
                 })
-            });
+            };
             return Ok(resultSet);
         }
 
@@ -93,6 +96,7 @@ namespace RoomMe.Api.Controllers
             }
 
             var dbListing = db.Listings.Find(id);
+
             dbListing.Address = listing.Address;
             dbListing.City = listing.City;
             dbListing.State = listing.State;
@@ -102,8 +106,7 @@ namespace RoomMe.Api.Controllers
             dbListing.Latitude = listing.Latitude;
             dbListing.Description = listing.Description;
 
-
-            db.Entry(listing).State = EntityState.Modified;
+            db.Entry(dbListing).State = EntityState.Modified;
 
             try
             {
@@ -142,9 +145,15 @@ namespace RoomMe.Api.Controllers
             IGeocoder geocoder = new GoogleGeocoder();
             var addresses = geocoder.Geocode($"{listing.Address}, {listing.City} {listing.State} {listing.Zip}");
 
-            listing.UserId = currentUser.Id;
-            listing.Latitude = addresses.First().Coordinates.Latitude;
-            listing.Longitude = addresses.First().Coordinates.Longitude;
+            try
+            {
+                listing.UserId = currentUser.Id;
+                listing.Latitude = addresses.First().Coordinates.Latitude;
+                listing.Longitude = addresses.First().Coordinates.Longitude;
+            }
+            catch (Exception)
+            {
+            }
 
             db.Listings.Add(listing);
             db.SaveChanges();

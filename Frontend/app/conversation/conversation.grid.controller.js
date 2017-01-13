@@ -3,35 +3,28 @@
 
     angular
         .module('app')
-        .controller('conversationController', conversationController);
+        .controller('ConversationGridController', ConversationGridController);
 
-    conversationController.$inject = ['conversationFactory', '$stateParams','messageFactory'];
+    ConversationGridController.$inject = ['userFactory'];
 
     /* @ngInject */
-    function conversationController(conversationFactory, $stateParams, messageFactory) {
+    function ConversationGridController(userFactory) {
         var vm = this;
-        vm.title = 'conversationController';
+        vm.title = 'ConversationGridController';
         vm.conversations = [];
-        vm.createConversation = createConversation;
+        vm.email;
 
         activate();
 
         ////////////////
 
         function activate() {
-            conversationFactory
-                .getAll()
-                .then(function(response){
-                    vm.conversations = response.data
-                });
-              }
-        function createConversation(conversation) {
-            conversationFactory
-                .create(conversation)
-                .then(function() {
-                    $state.go('conversation.detail');
+            userFactory
+                .getMe()
+                .then(function(response) {
+                    vm.conversations = response.data.conversations;
+                    vm.email = response.data.email;
                 })
-
         }
     }
 })();

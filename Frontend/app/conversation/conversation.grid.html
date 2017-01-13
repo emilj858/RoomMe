@@ -1,106 +1,17 @@
-<section class="global-page-header" style="margin-bottom: none!important;">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div>
-                    <h2 style="text-align:center!important;">Profile Page</h2>
-                </div>
-            </div>
-        </div>
-    </div>
+<section class="global-page-header" style="text-align: center;"> 
+   <h2 style="text-align:center;">Conversations</h2>
 </section>
-<!--/#Page header-->
-<section id="">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="sidebar">
-                    <div class="author widget">
-                        
-                        <div class="author-body text-center">
-                            <div class="author-img">
-                                
-                            </div>
-                            <div class="author-bio">
-                                <i class="ion-ios-gear-outline" style="float:right;"></i><br>
-                                <h2>Hi, {{Name}}</h2>
-                                <h3>{{Email Address}}</h3>
+<table style="width:100%" class="table table-striped">
+  <tr ng-click="">
+    <th><b>Contact</b></th>
+  </tr>
+  <tr ng-repeat="conversation in conversationGridCtrl.conversations">
+    <td ng-if="conversationGridCtrl.email == conversation.user1UserName">{{conversation.user2UserName}}</td>
+    <td ng-if="conversationGridCtrl.email == conversation.user2UserName">{{conversation.user1UserName}}</td>
+    <td><button type="button" ng-click="" class="btn btn-info" style="float:right;" ui-sref="conversation.detail({id:conversation.conversationId})">Expand</button></td>
+  </tr>
+  
+</table>
 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="recent-post widget">
-                        <h3>Favorites</h3>
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>Address</th>
-                                    <th>Price</th>
-                                    <th width="1%"></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{Address}}</td>
-                                    <td>{{Price}}</td>
-                                    <td><i class="ion-ios-trash-outline"></i></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            
-</section>
-<!--
-                    ==================================================
-                    Call To Action Section Start
-                    ================================================== -->
-<section id="call-to-action">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="block">
-                    <h2 class="title wow fadeInDown" data-wow-delay=".3s" data-wow-duration="300ms">SO WHAT YOU THINK ?</h1>
-                                        <p class="wow fadeInDown" data-wow-delay=".5s" data-wow-duration="300ms">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis,<br>possimus commodi, fugiat magnam temporibus vero magni recusandae? Dolore, maxime praesentium.</p>
-                                        <a href="contact.html" class="btn btn-default btn-contact wow fadeInDown" data-wow-delay=".7s" data-wow-duration="300ms">Contact With Me</a>
-                                    </div>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </section>
-                    <!--
-                    ==================================================
-                    Footer Section Start
-                    ================================================== -->
-                    <footer id="footer">
-                        <div class="container">
-                            <div class="col-md-8">
-                                <p class="copyright">Copyright: <span>2015</span> . Design and Developed by <a href="http://www.Themefisher.com">Themefisher</a></p>
-                            </div>
-                           
-                    </footer> <!-- /#footer -->
-
-
-
-                    <!-- MODAL FOR MESSAGES -->
-   <!--                  <div class="modal fade" id="myModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Contact Host</h4>
-      </div>
-      <div class="modal-body">
-        <textarea placeholder="Type message here.." cols="50" rows="5"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Send Message</button>
-      </div>
-    </div>
-  </div>
-</div> -->
+</div>

@@ -1,62 +1,36 @@
-<section id="contact-section">
-    <div class="col-md-6">
-        <div class="map-area">
-            <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Add Listing</h2>
-            <div class="contact-form">
-                <form id="contact-form" role="form">
-                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
-                        <input ng-model="addListingCtrl.newListing.address" type="text" placeholder="Address" class="form-control" name="Street Address">
-                    </div>
-                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
-                        <input ng-model="addListingCtrl.newListing.city" type="text" placeholder="City" class="form-control" name="City">
-                    </div>
-                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
-                        <input ng-model="addListingCtrl.newListing.state" type="text" placeholder="State" class="form-control" name="State">
-                    </div>
-                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
-                        <input ng-model="addListingCtrl.newListing.zip" type="text" placeholder="Zip Code" class="form-control" name="Zip">
-                    </div>
-                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
-                        <input ng-model="addListingCtrl.newListing.price" type="text" placeholder="Price" class="form-control" name="Price">
-                    </div>
-                    <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
-                        <textarea ng-model="addListingCtrl.newListing.description" class=" form-control" rows="8" placeholder="Description"></textarea>
-                    </div>
-                    <div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
-                        <button ng-click="addListingCtrl.addListing()" class="btn btn-primary">+ Add Listing</button>
-                    </div>
-            </div>
-            </form>
-        </div>
-    </div>
-    </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="block">
-                    <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Photos</h2>
-                    <div class="contact-form">
-                        <form ng-submit="loginCtrl.login()" id="contact-form" method="post" action="sendmail.php" role="form">
-                            <div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
-                                <input type="submit" id="contact-submit" class="btn btn-default btn-send" value="Add Photo">
-                            </div>
-                        </form>
-                    </div>
+
+    <div class="row" style="margin-top: 100px;">
+        <div class="col-md-6">
+            <div class="map-area">
+                <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Add Listing</h2>
+                <div class="contact-form">
+                    <form id="contact-form" role="form">
+                        <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                            <input ng-model="addListingCtrl.newListing.address" type="text" placeholder="Address" class="form-control" name="Street Address">
+                        </div>
+                        <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+                            <input ng-model="addListingCtrl.newListing.city" type="text" placeholder="City" class="form-control" name="City">
+                        </div>
+                        <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                            <input ng-model="addListingCtrl.newListing.state" type="text" placeholder="State" class="form-control" name="State">
+                        </div>
+                        <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+                            <input ng-model="addListingCtrl.newListing.zip" type="text" placeholder="Zip Code" class="form-control" name="Zip">
+                        </div>
+                        <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                            <input ng-model="addListingCtrl.newListing.price" type="text" placeholder="Price" class="form-control" name="Price">
+                        </div>
+                        <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+                            <textarea ng-model="addListingCtrl.newListing.description" class=" form-control" rows="8" placeholder="Description"></textarea>
+                        </div>
+                        <div id="submit" class="wow fadeInDown" data-wow-duration="500ms" data-wow-delay="1.4s">
+                            <button ng-click="addListingCtrl.addListing()" class="btn btn-primary">+ Add Listing</button>
+                        </div>
                 </div>
+                </form>
             </div>
         </div>
+        <div class="col-md-6">
+            <input filepicker ng-model="addListingCtrl.newImage" type="filepicker-dragdrop" data-fp-services="computer,facebook,dropbox,box,webcam" on-success="addListingCtrl.onImageAdded()" />   
+        </div>
     </div>
-   
-        <!-- 
-        ================================================== 
-            Footer Section Start
-        ================================================== -->
-        <footer id="footer">
-            <div class="container">
-                <div class="col-md-8">
-                    <p class="copyright">Copyright: <span>2017</span> . Design and Developed by TheRoomMeTeam</p>
-                </div>
-               
-            </div>
-        </footer>

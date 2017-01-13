@@ -16,7 +16,8 @@
             update: update,
             remove: remove,
             addFavoriteToUser: addFavoriteToUser,
-            removeFavoriteFromUser: removeFavoriteFromUser
+            removeFavoriteFromUser: removeFavoriteFromUser,
+            getMe: getMe
         };
         return service;
 
@@ -42,14 +43,19 @@
         	return $http
         		.delete(apiUrl + '/users/' + id);
         }
-        function addFavoriteToUser(listingId, userId) {
+        function addFavoriteToUser(listingId) {
         	return $http
-        		.post(apiUrl + '/favorites/' + listingId + userId);
+        		.post(apiUrl + '/me/favorite/' + listingId);
         }
 
-        function removeFavoriteFromUser(listingId, userId) {
+        function removeFavoriteFromUser(listingId) {
         	return $http
-        		.delete(apiUrl + '/favorites/' + listingId + userId)
+        		.delete(apiUrl + '/me/favorite/' + listingId)
+        }
+
+        function getMe(){
+            return $http
+                .get(apiUrl + '/me')
         }
     }
 })();
