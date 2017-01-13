@@ -5,10 +5,10 @@
         .module('app')
         .controller('ListingDetailController', ListingDetailController);
 
-    ListingDetailController.$inject = ['$stateParams', 'userFactory', 'listingFactory'];
+    ListingDetailController.$inject = ['$stateParams', 'userFactory', 'listingFactory', 'SweetAlert'/*, 'ngMaps'*/];
 
     /* @ngInject */
-    function ListingDetailController($stateParams, userFactory, listingFactory) {
+    function ListingDetailController($stateParams, userFactory, listingFactory, SweetAlert/*, ngMaps*/) {
         var vm = this;
         vm.title = 'ListingDetailController';
         vm.currentListing = [];
@@ -22,27 +22,23 @@
 
         function activate() {
         	listingFactory
-        		.getById(listingId)
+        		.getById($stateParams.id)
         		.then(function(response){
         			vm.currentListing = response.data;
+                    console.log(vm.currentListing)
         		});
-        	
-        	userFactory
-        		.getById(vm.currentListing.userId)
-                .then(function(response){
-                    vm.currentListingUser = response.data;
-    // If this breaks add $q 
+        }
+        function addFavorite(listingId) {
+            userFactory
+                .addFavoriteToUser(listingId)
+                .then(function(response) {
+                    SweetAlert.swal('Success', 'Listing added to favorites, you can find favorites in your profile.', 'success');
                 });
-
-        }
-        function addFavorite(listingId, userId) {
-            userFactory
-                .addFavoriteToUser(listingId, userId);
         }
 
-        function deleteFavorite(listingId, userId) {
+        function deleteFavorite(listingId) {
             userFactory
-                .removeFavoriteFromUser(listingId, userId);
+                .removeFavoriteFromUser(listingId);
         }
     }
 })();

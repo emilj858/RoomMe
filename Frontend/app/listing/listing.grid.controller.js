@@ -22,7 +22,18 @@
                 .getAll()
                 .then(function(response){
                     vm.listings = response.data;
+                    console.log("hello, hey");
                 });
+
+                //If we want current locaation
+
+           // navigator.geolocation.getCurrentPosition(function(position) {
+           //vm.currentPosition = [
+        //    position.coords.latitude,
+            //    position.coords.longitude
+            //];
+    //     });
+
         }
     }
 })();

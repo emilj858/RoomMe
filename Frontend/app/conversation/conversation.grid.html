@@ -1,0 +1,17 @@
+    <div class="container">
+<section class="global-page-header" style="text-align: center;"> 
+   <h2 style="text-align:center;">Conversations</h2>
+</section>
+<table style="width:100%" class="table table-striped">
+  <tr ng-click="">
+    <th><b>Contact</b></th>
+  </tr>
+  <tr ng-repeat="conversation in conversationGridCtrl.conversations">
+    <td ng-if="conversationGridCtrl.email == conversation.user1UserName">{{conversation.user2UserName}}</td>
+    <td ng-if="conversationGridCtrl.email == conversation.user2UserName">{{conversation.user1UserName}}</td>
+    <td><button type="button" ng-click="" class="btn btn-info" style="float:right;" ui-sref="conversation.detail({id:conversation.conversationId})">Expand</button></td>
+  </tr>
+  
+</table>
+
+</div>

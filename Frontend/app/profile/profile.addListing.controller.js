@@ -3,22 +3,48 @@
 
     angular
         .module('app')
-        .controller('ProfileAddListing', ProfileAddListing);
+        .controller('AddListingController', AddListingController);
 
-    ProfileAddListing.$inject = ['$stateParams', 'listingFactory'];
+    AddListingController.$inject = ['$stateParams', 'listingFactory', '$state', 'SweetAlert'];
 
     /* @ngInject */
-    function ProfileAddListing($stateParams, listingFactory) {
+    function AddListingController($stateParams, listingFactory, $state, SweetAlert) {
         var vm = this;
-        vm.title = 'ProfileAddListing';
+        vm.title = 'AddListingController';
         vm.addListing = addListing;
+        vm.onImageAdded = onImageAdded;
+
+        vm.newListing = {
+            price: '',
+            address: '',
+            city: '',
+            state: '',
+            zip: '',
+            description: '',
+            listingPhotoes: []
+        };
 
         ///////////////////
 
-        function addListing(listing) {
+        function addListing() {
             listingFactory
-            .create(listing);
+                .create(vm.newListing)
+                .then(function() {
+                    SweetAlert.swal('Good job!', 'You created a listing.', 'success');
+                    vm.newListing = {};
+                    $state.go('profile.detail');
+                });
 
+        }
+
+        function onImageAdded() {
+            vm.newListing.listingPhotoes.push({
+                url: vm.newImage
+            });
+        }
+
+        function addCoordiantes(address) {
+            vm.address = address.address + ", " + address.city + " " + address.state + " " + address.zip;
         }
     }
 })();

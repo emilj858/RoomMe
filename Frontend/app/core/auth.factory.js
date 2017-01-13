@@ -5,10 +5,10 @@
         .module('app')
         .factory('authFactory', authFactory);
 
-    authFactory.$inject = ['apiUrl', '$http', 'localStorageService'];
+    authFactory.$inject = ['apiUrl', '$http', 'localStorageService', 'userFactory'];
 
     /* @ngInject */
-    function authFactory(apiUrl, $http, localStorageService) {
+    function authFactory(apiUrl, $http, localStorageService, userFactory) {
         var service = {
             initialize: initialize,
             logout: logout,
@@ -23,12 +23,14 @@
         /////////
 
         function register(registrationData) {
-        	return $http.post(apiUrl + '/users/register', registrationData);
+            logout();
+            return $http.post(apiUrl + '/users/register', registrationData);
         }
+
         function login(username, password) {
             var data = 'grant_type=password' +
-                       '&username=' + username + 
-                       '&password=' + password;
+                '&username=' + username +
+                '&password=' + password;
 
             return $http
                 .post(apiUrl + '/users/login', data, {
@@ -36,16 +38,17 @@
                         'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 })
-                .then(function(response) {
+                .then(function(loginResponse) {
                     localStorageService.set('authorizationData', {
-                        token: response.data.access_token,
+                        token: loginResponse.data.access_token,
                         username: username
                     });
 
                     service.isLoggedIn = true;
                     service.username = username;
 
-                    return response.data;
+
+                    return userResponse.data;
                 })
                 .catch(function(error) {
                     console.log(error);
@@ -55,7 +58,7 @@
         function initialize() {
             var authorizationData = localStorageService.get('authorizationData');
 
-            if(authorizationData) {
+            if (authorizationData) {
                 service.isLoggedIn = true;
                 service.username = authorizationData.username;
             }

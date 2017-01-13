@@ -10,6 +10,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using RoomMe.Api.Infrastructure;
 using RoomMe.Api.Models;
+using Geocoding.Google;
+using Geocoding;
 
 namespace RoomMe.Api.Controllers
 {
@@ -20,7 +22,7 @@ namespace RoomMe.Api.Controllers
         // GET: api/Listings
         public IHttpActionResult GetListings()
         {
-            var resultSet = db.Listings.Select(l => new
+            var resultSet = db.Listings.OrderByDescending(l => l.ListingId).Select(l => new
             {
                 l.ListingId,
                 l.UserId,
@@ -29,6 +31,8 @@ namespace RoomMe.Api.Controllers
                 l.State,
                 l.Zip,
                 l.Price,
+                l.Longitude,
+                l.Latitude,
                 l.Description,
                 ListingPhotoes = l.ListingPhotoes.Select(lp => new
                 {
@@ -51,23 +55,28 @@ namespace RoomMe.Api.Controllers
             {
                 return NotFound();
             }
-            var resultSet = db.Listings.Select(l => new
+            var resultSet =  new
             {
-                l.ListingId,
-                l.UserId,
-                l.Address,
-                l.City,
-                l.State,
-                l.Zip,
-                l.Price,
-                l.Description,
-                ListingPhotoes = l.ListingPhotoes.Select(lp => new
+                listing.ListingId,
+                listing.UserId,
+                listing.User.FirstName,
+                listing.User.LastName,
+                listing.User.Email,
+                listing.Address,
+                listing.City,
+                listing.State,
+                listing.Zip,
+                listing.Price,
+                listing.Longitude,
+                listing.Latitude,
+                listing.Description,
+                ListingPhotoes = listing.ListingPhotoes.Select(lp => new
                 {
                     lp.ListingPhotoId,
                     lp.Url,
                     lp.Title
                 })
-            });
+            };
             return Ok(resultSet);
         }
 
@@ -87,15 +96,17 @@ namespace RoomMe.Api.Controllers
             }
 
             var dbListing = db.Listings.Find(id);
+
             dbListing.Address = listing.Address;
             dbListing.City = listing.City;
             dbListing.State = listing.State;
             dbListing.Zip = listing.Zip;
             dbListing.Price = listing.Price;
+            dbListing.Longitude = listing.Longitude;
+            dbListing.Latitude = listing.Latitude;
             dbListing.Description = listing.Description;
 
-
-            db.Entry(listing).State = EntityState.Modified;
+            db.Entry(dbListing).State = EntityState.Modified;
 
             try
             {
@@ -126,10 +137,40 @@ namespace RoomMe.Api.Controllers
                 return BadRequest(ModelState);
             }
 
+            var username = User.Identity.Name;
+
+            var currentUser = db.Users.FirstOrDefault(u => u.UserName == username);
+
+            // this is where we'll add lat/long
+            IGeocoder geocoder = new GoogleGeocoder();
+            var addresses = geocoder.Geocode($"{listing.Address}, {listing.City} {listing.State} {listing.Zip}");
+
+            try
+            {
+                listing.UserId = currentUser.Id;
+                listing.Latitude = addresses.First().Coordinates.Latitude;
+                listing.Longitude = addresses.First().Coordinates.Longitude;
+            }
+            catch (Exception)
+            {
+            }
+
             db.Listings.Add(listing);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = listing.ListingId }, listing);
+            return CreatedAtRoute("DefaultApi", new { id = listing.ListingId }, new
+            {
+                listing.ListingId,
+                listing.UserId,
+                listing.Latitude,
+                listing.Longitude,
+                listing.Address,
+                listing.City,
+                listing.Description,
+                listing.Price,
+                listing.State,
+                listing.Zip
+            });
         }
 
         // DELETE: api/Listings/5
@@ -149,8 +190,8 @@ namespace RoomMe.Api.Controllers
             return Ok(listing);
         }
 
-        // doing some new stuff
-        //Post Favorite to User
+        
+        //Post photo to listing
         [Authorize]
         [HttpPost, Route("api/listingPhotoes/{listingPhotoId}/{listingId}")]
         public IHttpActionResult AddListingPhotoToListing(int listingPhotoId, int listingId)
@@ -166,7 +207,7 @@ namespace RoomMe.Api.Controllers
             return Ok();
         }
 
-        //Delete Favorite/photo of User/listing
+        //Delete photo of listing
         [Authorize]
         [HttpDelete, Route("api/listingPhotoes/{listingPhotoId}/{listingId}")]
         public IHttpActionResult DeleteListingPhotoFromListing(int listingPhotoId, int listingId)
@@ -179,7 +220,7 @@ namespace RoomMe.Api.Controllers
         }
 
 
-        //ending new stuff
+       
 
         protected override void Dispose(bool disposing)
         {

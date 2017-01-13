@@ -1,3 +1,4 @@
+<!--camerons login
 <form ng-submit="loginCtrl.login()">
     <div class="form-group">
         <label for="">Username</label>
@@ -8,4 +9,71 @@
         <input type="password" class="form-control" ng-model="loginCtrl.password">
     </div>
     <button class="btn btn-primary" type="submit">Login</button>
-</form>
+</form> -->
+<section id="contact-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="block">
+                    <h2 class="subtitle wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Login</h2>
+                    <div class="contact-form">
+                        <form id="contact-form" role="form">
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                                <input type="email" placeholder="Email" class="form-control" name="username" id="username" ng-model="loginCtrl.username" >
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+                                <input type="password" placeholder="Password" class="form-control" name="password" id="password" ng-model="loginCtrl.password">
+                            </div>
+                            <br><button class="btn btn-primary" ng-click="loginCtrl.login()">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="map-area">
+                    <h2 class="subtitle  wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".3s">Not a User? Register Here!</h2>
+                    <div class="contact-form">
+                        <form id="contact-form" role="form">
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                                <input ng-model="loginCtrl.registration.firstName" type="text" placeholder="First Name" class="form-control" name="firstName" id="firstName">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+                                <input ng-model="loginCtrl.registration.lastName" type="text" placeholder="Last Name" class="form-control" name="lastName" id="lastName">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                                <input ng-model="loginCtrl.registration.emailAddress" type="email" placeholder="Email" class="form-control" name="email" id="email">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".8s">
+                                <input ng-model="loginCtrl.registration.password" type="password" placeholder="Password" class="form-control" name="password" id="password">
+                            </div>
+                            <div class="form-group wow fadeInDown" data-wow-duration="500ms" data-wow-delay=".6s">
+                                <input ng-model="loginCtrl.registration.confirmPassword" type="password" placeholder="Confrim Password" class="form-control" name="confirmPassword" id="confirmPassword">
+                            </div>
+                            <br><button class="btn btn-primary" ng-click="loginCtrl.register()">Sign Up!</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    </div>
+</section>
+<!-- 
+        ================================================== 
+            Call To Action Section Start
+        ================================================== -->
+
+
+        <!-- 
+        ================================================== 
+            Footer Section Start
+        ================================================== -->
+        <footer id="footer">
+            <div class="container">
+                <div class="col-md-8">
+                    <p class="copyright">Copyright: <span>2017</span> . Design and Developed by TheRoomMeTeam </p>
+                </div>
+            </div>
+        </footer>
